@@ -1,0 +1,22 @@
+# Render Blueprint — despliegue con un clic desde https://render.com
+# (New → Blueprint → conectar el repo GitHub). La API key se configura
+# manualmente como secreto en el panel del servicio (nunca en el repo).
+services:
+  - type: web
+    name: tutor-sig
+    runtime: node
+    plan: free
+    healthCheckPath: /api/health
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MODEL_PROVIDER
+        value: openrouter
+      - key: DEFAULT_MODEL
+        value: deepseek/deepseek-v4-flash
+      - key: FALLBACK_MODELS
+        value: qwen/qwen3.6-flash,anthropic/claude-sonnet-4.6,minimax/minimax-m3:free
+      - key: OPENROUTER_API_KEY
+        sync: false # SECRETO: configúralo en el dashboard de Render

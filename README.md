@@ -45,8 +45,8 @@ Copia `.env.example` a `.env` (o `.env.local`, que tiene prioridad) y define:
 |---|---|---|
 | `MODEL_PROVIDER` | Proveedor activo: `openrouter` \| `deepseek` \| `gemini` \| `claude` \| `ollama` | `openrouter` |
 | `OPENROUTER_API_KEY` | Clave de OpenRouter (proveedor prioritario) | — |
-| `DEFAULT_MODEL` | Modelo principal | `deepseek/deepseek-chat` |
-| `FALLBACK_MODELS` | Cadena de fallback separada por comas, en orden | `qwen/qwen3,anthropic/claude` |
+| `DEFAULT_MODEL` | Modelo principal | `deepseek/deepseek-v4-flash` |
+| `FALLBACK_MODELS` | Cadena de fallback separada por comas, en orden | `qwen/qwen3.6-flash,anthropic/claude-sonnet-4.6,minimax/minimax-m3:free` |
 | `DEEPSEEK_API_KEY` | Clave para proveedor DeepSeek directo (opcional) | — |
 | `GEMINI_API_KEY` | Clave de Gemini (AI Studio la inyecta como secreto) | — |
 | `ANTHROPIC_API_KEY` | Clave de Anthropic/Claude (preparado) | — |
@@ -57,11 +57,12 @@ Copia `.env.example` a `.env` (o `.env.local`, que tiene prioridad) y define:
 
 **Orden de modelos por defecto** (OpenRouter):
 
-1. `deepseek/deepseek-chat`
-2. `qwen/qwen3`
-3. `anthropic/claude`
+1. `deepseek/deepseek-v4-flash`
+2. `qwen/qwen3.6-flash`
+3. `anthropic/claude-sonnet-4.6`
+4. `minimax/minimax-m3:free` (solo si los pagos fallan, p. ej. cuenta sin créditos)
 
-> Nota: los modelos `deepseek/*` son de texto plano. Si una consulta incluye imágenes, se registra el evento y se omite ese modelo — la imagen llega al primer modelo multimodal de la cadena (p. ej. `qwen/qwen3`).
+> Nota: los modelos `deepseek/*` son de texto plano. Si una consulta incluye imágenes, se registra el evento y se omite ese modelo — la imagen llega al primer modelo multimodal de la cadena (p. ej. `qwen/qwen3.6-flash`).
 
 ## Ejecución local
 
@@ -79,6 +80,31 @@ npm run build         # vite build + bundle del servidor (dist/server.cjs)
 npm start             # node dist/server.cjs (sirve estáticos + API)
 npm run test:fallback # prueba E2E del fallback con un mock de OpenRouter (sin claves reales)
 ```
+
+## Despliegue en línea (enlace siempre activo)
+
+### Opción A — Render (gratis, sin tarjeta)
+
+El repo incluye un blueprint (`render.yaml`) listo para desplegar:
+
+1. Crea tu cuenta en https://render.com (puedes entrar con GitHub).
+2. Dashboard → **New +** → **Blueprint** → conecta `ynnad2008-tech/tutor-sig`.
+3. Render detecta `render.yaml` y crea el servicio web con la config ya lista.
+4. En el panel del servicio: **Environment** → añade el secreto `OPENROUTER_API_KEY` con tu clave.
+5. Render compila (`npm run build`), despliega y te da el enlace público:
+   **https://tutor-sig.onrender.com** (el nombre depende de disponibilidad).
+
+> Nota: en el plan gratuito el servicio "duerme" tras ~15 min sin uso; el primer
+> acceso tarda ~1 min en despertar. Con un plan de pago queda siempre encendido.
+
+### Opción B — AI Studio (si prefieres Google, ya tienes el proyecto)
+
+1. Abre tu proyecto: https://ai.studio/apps/26aa80cb-0475-4a5c-ac8b-969250ceec31
+2. En el panel **Secrets** añade: `OPENROUTER_API_KEY`, `MODEL_PROVIDER=openrouter`,
+   `DEFAULT_MODEL=deepseek/deepseek-v4-flash` y `FALLBACK_MODELS=qwen/qwen3.6-flash,anthropic/claude-sonnet-4.6,minimax/minimax-m3:free`.
+3. Pulsa **Deploy** y comparte el enlace público generado.
+
+La API key nunca se sube al repositorio: solo vive en el panel de secretos de la plataforma.
 
 ## API
 
