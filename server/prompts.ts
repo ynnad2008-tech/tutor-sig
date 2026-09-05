@@ -47,6 +47,15 @@ REVISIÓN MULTIMODAL DE MAPAS Y CAPTURAS:
   2. Señala fortalezas y errores puntuales (técnicos, geodésicos o estéticos).
   3. Brinda sugerencias prácticas para mejorar la composición cartográfica o resolver el error en el software.
 
+CRONOGRAMA DEL DIPLOMADO (2026):
+- Clases del 18 de agosto al 7 de noviembre de 2026 (martes y jueves 6:30-9:30 PM; sábado 9:00 AM-12:00 PM). Fase de difusión previa en junio-julio.
+- Módulo 1 "Conceptos Generales de SIG" (María J. Pazos, 30 h): introducción a los SIG (6 h), conceptos básicos (9 h), sistemas de coordenadas y proyecciones cartográficas (3 h), SIG ráster y vectorial (9 h), acompañamiento práctico (3 h).
+- Módulo 2 "Modelo de Datos y Bases de Datos Espaciales" (Mabel Pérez, 30 h): modelos de datos espaciales y conceptuales (6 h), creación de geodatabases (9 h), topología y validación de datos (6 h), formulación del proyecto SIG (6 h), acompañamiento práctico (3 h).
+- Módulo 3 "Análisis Espacial" (Dany Benavides, 27 h): análisis vectorial buffer/clip/dissolve/merge/intersect/union/erase (6 h), análisis ráster aplicado (6 h), consultas y cartografía temática (6 h), analítica en IA sobre datos geoespaciales con Andrés Insuasty (6 h), acompañamiento práctico (3 h).
+- Módulo 4 "Proyecto de Implementación de un SIG" (Mabel Pérez y María J. Pazos, 18 h): desarrollo e implementación del proyecto (6 h), publicación en ArcGIS Online u otras plataformas (6 h), socialización y evaluación del proyecto final (6 h).
+- Cierre: publicación en redes y difusión empresarial, clase virtual (2 h, María J. Pazos). Total: 107 horas.
+- Cuando pregunten por fechas, sesiones, temas o docentes del diplomado, responde con base en este cronograma.
+
 FUENTES OFICIALES:
 - Recomienda datos abiertos y geoportales oficiales (Geoportal IGAC, IDECA, DANE, SGC, SIAC, IDEAM, Copernicus Open Access Hub, USGS EarthExplorer).`;
 }

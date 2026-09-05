@@ -24,9 +24,11 @@ import {
   Maximize2,
   Code,
   Terminal,
+  CalendarDays,
 } from "lucide-react";
 import { ChatMessage, SoftwareTool } from "../types";
 import { chatWithTutor } from "../services/aiService";
+import { CronogramaDiplomado } from "./CronogramaDiplomado";
 
 interface ChatTutorProps {
   selectedSoftware: SoftwareTool | "General";
@@ -164,6 +166,7 @@ Estoy aquí para orientarte paso a paso en **SIG aplicado a la Arquitectura, el 
   const [showScrollBottom, setShowScrollBottom] = useState(false);
   const [previewModalImage, setPreviewModalImage] = useState<string | null>(null);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [showCronograma, setShowCronograma] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -520,6 +523,9 @@ Estoy aquí para orientarte paso a paso en **SIG aplicado a la Arquitectura, el 
         </div>
       )}
 
+      {/* Cronograma del Diplomado Modal */}
+      <CronogramaDiplomado open={showCronograma} onClose={() => setShowCronograma(false)} />
+
       {/* Lightbox Modal for Uploaded Screenshots */}
       {previewModalImage && (
         <div
@@ -556,6 +562,17 @@ Estoy aquí para orientarte paso a paso en **SIG aplicado a la Arquitectura, el 
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              id="cronograma-btn"
+              onClick={() => setShowCronograma(true)}
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-[#003057] hover:border-[#003057] transition font-semibold shadow-2xs hover:shadow-xs"
+              title="Ver el cronograma del diplomado"
+              aria-label="Ver el cronograma del diplomado"
+            >
+              <CalendarDays className="w-3.5 h-3.5 text-[#F3B229]" />
+              <span>Cronograma</span>
+            </button>
+
             <button
               id="export-chat-btn"
               onClick={handleExportSession}
@@ -812,6 +829,16 @@ Estoy aquí para orientarte paso a paso en **SIG aplicado a la Arquitectura, el 
                 );
               })}
             </div>
+
+            {/* Acceso directo al cronograma oficial del diplomado */}
+            <button
+              id="cronograma-starter-btn"
+              onClick={() => setShowCronograma(true)}
+              className="mt-3 w-full flex items-center justify-center gap-2 text-[11px] font-bold text-[#003057] bg-white border border-slate-200 hover:border-[#F3B229] hover:bg-amber-50/40 rounded-xl px-3 py-2 transition shadow-2xs"
+            >
+              <CalendarDays className="w-3.5 h-3.5 text-[#F3B229]" />
+              Ver cronograma del diplomado (ago – nov 2026)
+            </button>
           </div>
         )}
 
