@@ -32,7 +32,7 @@ export const TeacherTools: React.FC<TeacherToolsProps> = ({
   const [topic, setTopic] = useState("Cálculo de Índices Espectrales (NDVI/NDWI) y Clasificación de Coberturas");
   const [unit, setUnit] = useState<string>(selectedUnit);
   const [software, setSoftware] = useState<string>(selectedSoftware);
-  const [studyArea, setStudyArea] = useState("Cuenca del Río Pasto / Departamento de Nariño");
+  const [studyArea, setStudyArea] = useState("Municipio de Pasto y cuenca del Río Pasto / Nariño");
   const [targetAudience, setTargetAudience] = useState("Diplomado en SIG + IA (Universidad CESMAG)");
   const [result, setResult] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -257,7 +257,7 @@ export const TeacherTools: React.FC<TeacherToolsProps> = ({
                 type="text"
                 value={targetAudience}
                 onChange={(e) => setTargetAudience(e.target.value)}
-                placeholder="Ej. Maestría en Gestión Ambiental / Ingeniería Ambiental UNIMAR"
+                placeholder="Ej. Diplomado en SIG + IA (Universidad CESMAG)"
                 className="w-full text-xs rounded-lg border border-slate-300 p-2.5 text-slate-800 focus:outline-none font-medium"
               />
             </div>

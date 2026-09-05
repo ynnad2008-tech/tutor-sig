@@ -1,10 +1,9 @@
 export type CurricularUnit =
-  | "Unidad I: Fundamentos Cartográficos"
-  | "Unidad II: Introducción a los SIG"
-  | "Unidad III: Introducción al Manejo de ArcGIS Pro"
-  | "Unidad IV: Sistemas de Navegación por Satélite (GNSS)"
-  | "Unidad V: Geoprocesamiento y Teledetección"
-  | "Todas las Unidades";
+  | "Módulo 1: Conceptos Generales de SIG"
+  | "Módulo 2: Modelo de Datos y Bases de Datos Espaciales"
+  | "Módulo 3: Análisis Espacial e IA"
+  | "Módulo 4: Proyecto de Implementación de un SIG"
+  | "Todos los Módulos";
 
 export type SoftwareTool =
   | "ArcGIS Pro"
@@ -15,9 +14,9 @@ export type SoftwareTool =
   | "Python / GeoPandas";
 
 export type DisciplineFocus =
-  | "Ingeniería / Gestión Ambiental (UNIMAR)"
-  | "Gestión Integral de Cuencas Hidrológicas"
-  | "Ordenamiento Territorial y Planificación Ambiental"
+  | "Arquitectura y Ordenamiento Territorial (CESMAG)"
+  | "Gestión Ambiental y Cuencas Hidrológicas"
+  | "Planificación Urbana y Territorial"
   | "Evaluación de Impacto y Riesgo de Desastres";
 
 export interface ChatMessage {

@@ -41,34 +41,34 @@ const QUICK_STARTERS = [
       "¿Cómo configuro y transformo mis capas al sistema oficial MAGNA-SIRGAS Origen Nacional (EPSG: 9377) según la Resolución 471 de 2020 del IGAC?",
   },
   {
-    icon: Calculator,
-    title: "Índice de Vegetación (NDVI) en Sentinel-2",
-    prompt:
-      "Explícame paso a paso cómo calcular el NDVI con imágenes Sentinel-2 en la Calculadora Ráster y cómo interpretar los valores en un estudio ambiental.",
-  },
-  {
     icon: Layers,
-    title: "Delimitación de Cuenca con DEM",
+    title: "Diagnóstico de usos del suelo para POT/PBOT",
     prompt:
-      "¿Cuál es la secuencia metodológica de geoprocesamiento para delimitar una cuenca hidrográfica a partir de un Modelo Digital de Elevación (DEM)?",
+      "¿Cómo estructurar un diagnóstico de usos del suelo y coberturas para un Plan de Ordenamiento Territorial (POT/PBOT), y qué análisis de superposición debo aplicar para detectar conflictos de uso?",
   },
   {
     icon: Compass,
-    title: "Revisión Cartográfica y Elementos de Salida",
+    title: "Accesibilidad y equipamientos urbanos",
     prompt:
-      "¿Cuáles son los elementos indispensables de composición que debe tener un mapa ambiental (escala gráfica, grilla, norte, leyenda, rotulado)?",
+      "¿Qué secuencia de geoprocesamiento (Buffer, Spatial Join, análisis de redes) uso para evaluar la accesibilidad y cobertura de equipamientos urbanos en un municipio?",
   },
   {
-    icon: Sparkles,
-    title: "Clasificación con IA en Earth Engine",
+    icon: Calculator,
+    title: "Índice de Vegetación (NDVI) en Sentinel-2",
     prompt:
-      "¿Cómo estructurar un flujo de clasificación supervisada de coberturas con Random Forest en Google Earth Engine (GEE)?",
+      "Explícame paso a paso cómo calcular el NDVI con imágenes Sentinel-2 en la Calculadora Ráster y cómo interpretar los valores en un estudio territorial y ambiental.",
   },
   {
     icon: ShieldCheck,
-    title: "Reglas de Topología y Geodatabases",
+    title: "Amenazas y aptitud del suelo para proyectos",
     prompt:
-      "¿Cómo crear una File Geodatabase (.gdb) y qué reglas de topología debo aplicar para evitar solapamientos o huecos entre polígonos?",
+      "¿Cómo integrar pendientes, geología y coberturas en un análisis de amenaza por movimientos en masa y aptitud del suelo para localizar un proyecto arquitectónico o urbanístico?",
+  },
+  {
+    icon: Sparkles,
+    title: "Rondas hídricas y servicios públicos (EMPOPASTO)",
+    prompt:
+      "¿Cómo delimitar rondas hídricas y analizar la cobertura de redes de acueducto para identificar sectores urbanos con déficit de servicio, usando herramientas de geoprocesamiento?",
   },
 ];
 
@@ -136,7 +136,7 @@ export const ChatTutor: React.FC<ChatTutorProps> = ({
       role: "model",
       content: `¡Hola! Soy **Tutor-SIG**, tu copiloto de Inteligencia Artificial para **Sistemas de Información Geográfica, Teledetección y Cartografía** en la **Universidad CESMAG**.
 
-Estoy aquí para orientarte paso a paso en tus dudas técnicas, metodológicas y procedimentales en **ArcGIS Pro, QGIS, Google Earth Engine, Google Earth Pro y Python geoespacial**.
+Estoy aquí para orientarte paso a paso en **SIG aplicado a la Arquitectura, el Ordenamiento Territorial y la Gestión Ambiental**, con **ArcGIS Pro y ArcGIS Online** como herramientas principales (y QGIS, Google Earth Engine o Python como apoyo).
 
 ---
 

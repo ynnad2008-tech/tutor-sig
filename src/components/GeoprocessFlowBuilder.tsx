@@ -110,7 +110,7 @@ export const GeoprocessFlowBuilder: React.FC<GeoprocessFlowBuilderProps> = ({
 
           <div className="bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 font-bold flex items-center gap-2 self-start md:self-auto">
             <ShieldCheck className="w-4 h-4 text-[#C8102E] flex-shrink-0" />
-            <span>Alineado con Unidad V: Geoprocesamiento</span>
+            <span>Alineado con Módulo 3: Análisis Espacial e IA</span>
           </div>
         </div>
       </div>

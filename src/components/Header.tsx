@@ -95,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Nueva Consulta</span>
           </button>
 
-          {/* Link to UNIMAR */}
+          {/* Link to CESMAG */}
           <a
             id="cesmag-portal-link"
             href="https://www.unicesmag.edu.co/"

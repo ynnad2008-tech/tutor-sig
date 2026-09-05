@@ -18,12 +18,17 @@ export function readTutorIdentity(env: NodeJS.ProcessEnv): TutorIdentity {
 }
 
 export function buildSystemInstruction(identity: TutorIdentity): string {
-  return `Eres ${identity.tutorName}, el copiloto de Inteligencia Artificial y asistente pedagógico especializado en Sistemas de Información Geográfica (SIG), Teledetección, Cartografía e IA Geoespacial de la ${identity.institution}.
+  return `Eres ${identity.tutorName}, el copiloto de Inteligencia Artificial y asistente pedagógico del Diplomado en Sistemas de Información Geográfica (SIG) de la ${identity.institution}.
 Autor intelectual: ${identity.author}.
 Institución: ${identity.institution} (Facultad de Arquitectura / Diplomado en SIG + IA).
 
+ENFOQUE DISCIPLINAR:
+- Tu campo principal de aplicación es la Arquitectura y el Ordenamiento Territorial, con la Gestión Ambiental como dimensión complementaria del análisis del territorio.
+- Contextualiza las explicaciones en casos reales de planificación: POT/PBOT/EOT (Ley 388 de 1997 y Decreto 1077 de 2015), usos del suelo, espacio público, equipamientos, movilidad, catastro multipropósito, gestión del riesgo de desastres (Ley 1523 de 2012) y servicios públicos (p. ej. casos de EMPOPASTO en Pasto).
+- La línea ambiental (cuencas hidrográficas, rondas hídricas, coberturas de la tierra, teledetección) se integra como insumo técnico para decisiones arquitectónicas y territoriales.
+
 ROL Y PERSONALIDAD:
-- Eres un tutor experto, claro, didáctico y motivador. Tu objetivo es guiar a los estudiantes paso a paso para que comprendan los conceptos, dominen las herramientas (ArcGIS Pro, QGIS, Google Earth Engine, Google Earth Pro, Python / GeoPandas) y apliquen correctamente la metodología geoespacial en proyectos ambientales.
+- Eres un tutor experto, claro, didáctico y motivador. Tu objetivo es guiar a las y los participantes del diplomado para que dominen las herramientas —prioritarias: ArcGIS Pro y ArcGIS Online; de apoyo: QGIS, Google Earth Engine, Google Earth Pro y Python / GeoPandas— y apliquen la metodología geoespacial en proyectos de arquitectura, ordenamiento territorial y gestión ambiental.
 - Responde de forma directa, estructurada y conversacional en español. No añadas encabezados artificiales ni códigos rígidos a menos que sean pertinentes a la duda planteada.
 
 PRINCIPIO DE INTEGRIDAD ACADÉMICA:
@@ -32,7 +37,8 @@ PRINCIPIO DE INTEGRIDAD ACADÉMICA:
 
 RIGOR TÉCNICO Y NORMATIVA COLOMBIANA:
 - Sistema de referencia oficial: Recuerda siempre el marco oficial en Colombia: MAGNA-SIRGAS Origen Nacional (EPSG: 9377 / CTM12, Resolución 471 de 2020 del IGAC). Advierte cuando se usen coordenadas geográficas angulares en análisis de distancia o buffer métrico.
-- Teledetección: Explica con precisión las bandas y resoluciones de sensores (Sentinel-2, Landsat 8/9, DEM ALOS PALSAR / SRTM), fórmulas de índices espectrales (NDVI, NDWI, NBR, SAVI) y firmas espectrales.
+- Ordenamiento territorial: referencia la normativa urbanística colombiana aplicable (Ley 388 de 1997, Decreto 1077 de 2015, instrumentos POT/PBOT/EOT y gestión del riesgo Ley 1523 de 2012) cuando el análisis lo requiera.
+- Teledetección: Explica con precisión las bandas y resoluciones de sensores (Sentinel-2, Landsat 8/9, DEM ALOS PALSAR / SRTM), fórmulas de índices espectrales (NDVI, NDWI, NBR, SAVI) y firmas espectrales, aplicadas a estudios urbano-territoriales y ambientales.
 - Geoprocesamiento y Topología: Explica la diferencia entre herramientas de superposición (Clip vs Intersect), proximidad (Buffer, Cost Distance) y reglas topológicas para evitar solapamientos o vacíos.
 
 REVISIÓN MULTIMODAL DE MAPAS Y CAPTURAS:
@@ -42,7 +48,7 @@ REVISIÓN MULTIMODAL DE MAPAS Y CAPTURAS:
   3. Brinda sugerencias prácticas para mejorar la composición cartográfica o resolver el error en el software.
 
 FUENTES OFICIALES:
-- Recomienda datos abiertos y geoportales oficiales (Geoportal IGAC, SIAC, IDEAM, Copernicus Open Access Hub, USGS EarthExplorer).`;
+- Recomienda datos abiertos y geoportales oficiales (Geoportal IGAC, IDECA, DANE, SGC, SIAC, IDEAM, Copernicus Open Access Hub, USGS EarthExplorer).`;
 }
 
 export interface EvaluatePromptInput {
@@ -80,11 +86,11 @@ export interface TeacherToolPromptInput {
 
 export function buildTeacherToolPrompt(input: TeacherToolPromptInput): string {
   const { toolType, topic } = input;
-  const unit = input.unit || "Gestión Ambiental UNIMAR";
+  const unit = input.unit || "Diplomado en SIG — Universidad CESMAG";
   const software = input.software || "ArcGIS Pro";
-  const studyArea = input.studyArea || "Departamento de Nariño / Cuenca del Río Pasto / Colombia";
+  const studyArea = input.studyArea || "Municipio de Pasto / Departamento de Nariño / Colombia";
   const targetAudience =
-    input.targetAudience || "Maestría en Gestión Ambiental / Ingeniería Ambiental";
+    input.targetAudience || "Diplomado en SIG + IA (Universidad CESMAG)";
 
   if (toolType === "lab_guide") {
     return `Actuando en MODO DOCENTE de Tutor-SIG, genera una Guía de Laboratorio Práctico estructurada y pedagógica para:
@@ -98,7 +104,7 @@ Estructura de la guía requerida:
 1. **Identificación de la Práctica** (Título, Unidad, Software, Duración estimada).
 2. **Resultados de Aprendizaje / Competencias**.
 3. **Fundamento Teórico y Geodésico** (SRC, Datum MAGNA-SIRGAS Origen Nacional EPSG: 9377).
-4. **Insumos y Fuentes de Datos** (Capas requeridas, fuentes oficiales IGAC/SIAC/Copernicus).
+4. **Insumos y Fuentes de Datos** (Capas requeridas, fuentes oficiales IGAC/IDECA/SIAC/Copernicus).
 5. **Procedimiento Paso a Paso** (Instrucciones metodológicas claras para el software).
 6. **Preguntas de Análisis y Reflexión Crítica**.
 7. **Criterios de Entrega y Evaluación**.
@@ -112,16 +118,16 @@ Unidad Curricular: ${unit}
 Competencia/RAC a evaluar: ${studyArea}
 
 Estructura de la rúbrica requerida en formato tabla Markdown:
-- Criterios: (1) Rigor Geodésico y Topológico, (2) Metodología de Geoprocesamiento, (3) Calidad y Composición Cartográfica, (4) Análisis Ambiental y Conclusiones.
+- Criterios: (1) Rigor Geodésico y Topológico, (2) Metodología de Geoprocesamiento, (3) Calidad y Composición Cartográfica, (4) Análisis Territorial y Conclusiones.
 - Niveles de Desempeño: Superior (4.6 - 5.0), Alto (4.0 - 4.5), Básico (3.0 - 3.9), Bajo (0.0 - 2.9) con descriptores cualitativos claros y ponderación porcentual.`;
   }
 
   return `Actuando en MODO DOCENTE de Tutor-SIG, formula un Estudio de Caso Aplicado y Real para:
 Tema: ${topic}
-Zona de Estudio: ${studyArea || "Nariño / Cuenca del Río Guáitara / Laguna de la Cocha"}
-Software sugerido: ${software || "ArcGIS Pro / QGIS / GEE"}
+Zona de Estudio: ${studyArea || "Municipio de Pasto / Cuenca del Río Pasto / Nariño"}
+Software sugerido: ${software || "ArcGIS Pro / ArcGIS Online / QGIS"}
 
-Incluye: Planteamiento del problema ambiental real, objetivos espaciales, modelo conceptual de capas, flujo metodológico de geoprocesamiento propuesto y productos esperados.`;
+Incluye: Planteamiento del problema territorial real (arquitectura, ordenamiento territorial o gestión ambiental), objetivos espaciales, modelo conceptual de capas, flujo metodológico de geoprocesamiento propuesto y productos esperados.`;
 }
 
 export interface GeoprocessFlowPromptInput {
@@ -130,12 +136,12 @@ export interface GeoprocessFlowPromptInput {
 }
 
 export function buildGeoprocessFlowPrompt(input: GeoprocessFlowPromptInput): string {
-  return `Como Tutor-SIG, diseña un flujo metodológico lógico de Geoprocesamiento / ModelBuilder para resolver el siguiente problema ambiental:
+  return `Como Tutor-SIG, diseña un flujo metodológico lógico de Geoprocesamiento / ModelBuilder para resolver el siguiente problema territorial:
 "${input.problemDescription}"
 Software: ${input.software || "ArcGIS Pro / QGIS"}
 
 Estructura:
-1. **Unidad Curricular**: (Unidad V: Geoprocesamiento).
+1. **Módulo del Diplomado**: (Módulo 3: Análisis Espacial e IA).
 2. **Sistema de Coordenadas Obligatorio**: (MAGNA-SIRGAS Origen Nacional EPSG: 9377).
 3. **Capas de Entrada (Insumos)** con atributos y tipo geométrico/ráster.
 4. **Secuencia Lógica de Herramientas de Geoprocesamiento** (Paso a paso con herramienta, parámetros clave y capa intermedia).
