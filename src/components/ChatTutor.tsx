@@ -134,7 +134,7 @@ export const ChatTutor: React.FC<ChatTutorProps> = ({
     {
       id: "welcome-msg",
       role: "model",
-      content: `¡Hola! Soy **Tutor-SIG**, tu copiloto de Inteligencia Artificial para **Sistemas de Información Geográfica, Teledetección y Cartografía** en la **Universidad Mariana**.
+      content: `¡Hola! Soy **Tutor-SIG**, tu copiloto de Inteligencia Artificial para **Sistemas de Información Geográfica, Teledetección y Cartografía** en la **Universidad CESMAG**.
 
 Estoy aquí para orientarte paso a paso en tus dudas técnicas, metodológicas y procedimentales en **ArcGIS Pro, QGIS, Google Earth Engine, Google Earth Pro y Python geoespacial**.
 
@@ -429,14 +429,14 @@ Estoy aquí para orientarte paso a paso en tus dudas técnicas, metodológicas y
 
   // Export session transcript as Markdown
   const handleExportSession = () => {
-    const header = `# Tutor-SIG - Guía de Estudio y Consulta Académica\n**Institución:** Universidad Mariana\n**Fecha:** ${new Date().toLocaleDateString(
+    const header = `# Tutor-SIG - Guía de Estudio y Consulta Académica\n**Institución:** Universidad CESMAG\n**Fecha:** ${new Date().toLocaleDateString(
       "es-CO",
       { weekday: "long", year: "numeric", month: "long", day: "numeric" }
-    )}\n**Software:** ${selectedSoftware}\n**Autor intelectual:** Geógr. Dany Benavides Bolaños\n\n---\n\n`;
+    )}\n**Software:** ${selectedSoftware}\n**Autor intelectual:** geógr. Dany Benavides Bolaños\n\n---\n\n`;
 
     const body = messages
       .map((m) => {
-        const author = m.role === "user" ? "### 👤 Estudiante" : "### 🧭 Tutor-SIG (Universidad Mariana)";
+        const author = m.role === "user" ? "### 👤 Estudiante" : "### 🧭 Tutor-SIG (Universidad CESMAG)";
         return `${author} *[${m.timestamp}]*\n\n${m.content}\n\n---\n`;
       })
       .join("\n");
@@ -663,7 +663,7 @@ Estoy aquí para orientarte paso a paso en tus dudas técnicas, metodológicas y
                   <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
                     <span className="flex items-center gap-1 text-[10px] text-slate-500 font-medium">
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                      Universidad Mariana • Tutoría Formativa
+                      Universidad CESMAG • Tutoría Formativa
                     </span>
 
                     <div className="flex items-center gap-1.5">
@@ -921,7 +921,7 @@ Estoy aquí para orientarte paso a paso en tus dudas técnicas, metodológicas y
             💡 <kbd className="bg-slate-200 px-1 py-0.5 rounded text-[10px] font-mono">Enter</kbd> para enviar • <kbd className="bg-slate-200 px-1 py-0.5 rounded text-[10px] font-mono">Ctrl+V</kbd> para pegar capturas de pantalla.
           </span>
           <span className="font-semibold text-[#003057] hidden sm:inline">
-            Universidad Mariana • Tutor-SIG
+            Universidad CESMAG • Tutor-SIG
           </span>
         </div>
       </div>

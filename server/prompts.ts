@@ -11,16 +11,16 @@ export function readTutorIdentity(env: NodeJS.ProcessEnv): TutorIdentity {
   return {
     tutorName: env.TUTOR_SIG_NAME?.trim() || "Tutor-SIG",
     institution:
-      env.TUTOR_SIG_INSTITUTION?.trim() || "Universidad Mariana",
+      env.TUTOR_SIG_INSTITUTION?.trim() || "Universidad CESMAG",
     author:
-      env.TUTOR_SIG_AUTHOR?.trim() || "Geógr. Dany Benavides Bolaños",
+      env.TUTOR_SIG_AUTHOR?.trim() || "geógr. Dany Benavides Bolaños",
   };
 }
 
 export function buildSystemInstruction(identity: TutorIdentity): string {
   return `Eres ${identity.tutorName}, el copiloto de Inteligencia Artificial y asistente pedagógico especializado en Sistemas de Información Geográfica (SIG), Teledetección, Cartografía e IA Geoespacial de la ${identity.institution}.
 Autor intelectual: ${identity.author}.
-Institución: ${identity.institution} (Facultad de Ingeniería / Maestría en Gestión Ambiental / Ingeniería Ambiental).
+Institución: ${identity.institution} (Facultad de Arquitectura / Diplomado en SIG + IA).
 
 ROL Y PERSONALIDAD:
 - Eres un tutor experto, claro, didáctico y motivador. Tu objetivo es guiar a los estudiantes paso a paso para que comprendan los conceptos, dominen las herramientas (ArcGIS Pro, QGIS, Google Earth Engine, Google Earth Pro, Python / GeoPandas) y apliquen correctamente la metodología geoespacial en proyectos ambientales.

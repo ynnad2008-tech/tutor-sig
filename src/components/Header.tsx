@@ -20,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
           <div className="flex items-center gap-2.5 sm:gap-3">
             <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm border border-slate-100">
-              <span className="text-[#003057] font-extrabold text-lg sm:text-xl leading-none">M</span>
+              <span className="text-[#003057] font-extrabold text-lg sm:text-xl leading-none">C</span>
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </h1>
               </div>
               <p className="text-[10px] sm:text-[11px] text-slate-300 font-medium">
-                Universidad Mariana • <span className="text-slate-400">Autor: Geógr. Dany Benavides Bolaños</span>
+                Universidad CESMAG • <span className="text-slate-400">Autor: geógr. Dany Benavides Bolaños</span>
               </p>
             </div>
           </div>
@@ -97,15 +97,15 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Link to UNIMAR */}
           <a
-            id="unimar-portal-link"
-            href="https://www.umariana.edu.co"
+            id="cesmag-portal-link"
+            href="https://www.unicesmag.edu.co/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs inline-flex items-center gap-1 px-2.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-[#F3B229] font-bold transition border border-white/15"
-            title="Portal oficial de la Universidad Mariana"
-            aria-label="Ir al portal oficial de la Universidad Mariana"
+            title="Portal oficial de la Universidad CESMAG"
+            aria-label="Ir al portal oficial de la Universidad CESMAG"
           >
-            <span className="hidden md:inline">UNIMAR</span>
+            <span className="hidden md:inline">CESMAG</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>

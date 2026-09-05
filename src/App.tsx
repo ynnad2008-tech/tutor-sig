@@ -36,11 +36,11 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <div className="flex items-center gap-2">
             <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-[#003057] font-extrabold text-[10px]">M</span>
+              <span className="text-[#003057] font-extrabold text-[10px]">C</span>
             </div>
             <span className="text-slate-300 text-[11px]">
-              <strong className="text-white font-semibold">Tutor-SIG</strong> • Universidad Mariana | Autor:{" "}
-              <strong className="text-slate-200">Geógr. Dany Benavides Bolaños</strong>
+              <strong className="text-white font-semibold">Tutor-SIG</strong> • Universidad CESMAG | Autor:{" "}
+              <strong className="text-slate-200">geógr. Dany Benavides Bolaños</strong>
             </span>
           </div>
 
@@ -51,12 +51,12 @@ export default function App() {
             </span>
             <span>•</span>
             <a
-              href="https://www.umariana.edu.co"
+              href="https://www.unicesmag.edu.co/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#F3B229] hover:underline flex items-center gap-0.5 font-semibold"
             >
-              <span>umariana.edu.co</span>
+              <span>unicesmag.edu.co</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
