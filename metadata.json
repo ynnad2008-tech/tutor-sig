@@ -1,0 +1,7 @@
+{
+  "name": "Tutor-SIG",
+  "description": "Copiloto docente e IA de soporte pedagógico especializado en SIG, Teledetección e IA Aplicada para la Universidad Mariana.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
