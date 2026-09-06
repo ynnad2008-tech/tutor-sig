@@ -61,6 +61,8 @@ Copia `.env.example` a `.env` (o `.env.local`, que tiene prioridad) y define:
 | `TUTOR_SIG_PROGRAMA` | Programa académico de la bienvenida y del prompt | Diplomado en SIG + IA — Facultad de Arquitectura |
 | `TUTOR_SIG_ENFOQUE` | Frase de enfoque disciplinar del prompt | Arquitectura y Ordenamiento Territorial (ambiental complementario) |
 | `MATERIALES_JSON` | Materiales de referencia del despliegue: arreglo JSON de `{title, url}`; `[]` = pendientes | Material Fase 3 de CESMAG |
+| `QUICK_STARTERS_JSON` | Tarjetas de consulta frecuente del despliegue: arreglo JSON de `{title, prompt, icon}` | Tarjetas de CESMAG |
+| `TUTOR_SIG_CRONOGRAMA` | `0` oculta el cronograma (pendiente en el despliegue); `1` lo muestra | `1` (CESMAG) |
 
 **Orden de modelos por defecto** (OpenRouter):
 

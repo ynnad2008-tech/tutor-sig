@@ -38,43 +38,24 @@ interface ChatTutorProps {
   config: AppConfig;
 }
 
-const QUICK_STARTERS = [
-  {
-    icon: MapPin,
-    title: "MAGNA-SIRGAS Origen Nacional (9377)",
-    prompt:
-      "¿Cómo configuro y transformo mis capas al sistema oficial MAGNA-SIRGAS Origen Nacional (EPSG: 9377) según la Resolución 471 de 2020 del IGAC?",
-  },
-  {
-    icon: Layers,
-    title: "Diagnóstico de usos del suelo para POT/PBOT",
-    prompt:
-      "¿Cómo estructurar un diagnóstico de usos del suelo y coberturas para un Plan de Ordenamiento Territorial (POT/PBOT), y qué análisis de superposición debo aplicar para detectar conflictos de uso?",
-  },
-  {
-    icon: Compass,
-    title: "Accesibilidad y equipamientos urbanos",
-    prompt:
-      "¿Qué secuencia de geoprocesamiento (Buffer, Spatial Join, análisis de redes) uso para evaluar la accesibilidad y cobertura de equipamientos urbanos en un municipio?",
-  },
-  {
-    icon: Calculator,
-    title: "Índice de Vegetación (NDVI) en Sentinel-2",
-    prompt:
-      "Explícame paso a paso cómo calcular el NDVI con imágenes Sentinel-2 en la Calculadora Ráster y cómo interpretar los valores en un estudio territorial y ambiental.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Amenazas y aptitud del suelo para proyectos",
-    prompt:
-      "¿Cómo integrar pendientes, geología y coberturas en un análisis de amenaza por movimientos en masa y aptitud del suelo para localizar un proyecto arquitectónico o urbanístico?",
-  },
-  {
-    icon: Sparkles,
-    title: "Rondas hídricas y servicios públicos (EMPOPASTO)",
-    prompt:
-      "¿Cómo delimitar rondas hídricas y analizar la cobertura de redes de acueducto para identificar sectores urbanos con déficit de servicio, usando herramientas de geoprocesamiento?",
-  },
+/** Mapa de iconos disponibles para las tarjetas de consulta frecuente. */
+const ICON_MAP: Record<string, React.ComponentType<any>> = {
+  mappin: MapPin,
+  layers: Layers,
+  compass: Compass,
+  calculator: Calculator,
+  shield: ShieldCheck,
+  sparkles: Sparkles,
+};
+
+/** Tarjetas por defecto (CESMAG), usadas si /api/config no responde. */
+const DEFAULT_QUICK_STARTERS = [
+  { icon: "mappin", title: "MAGNA-SIRGAS Origen Nacional (9377)", prompt: "¿Cómo configuro y transformo mis capas al sistema oficial MAGNA-SIRGAS Origen Nacional (EPSG: 9377) según la Resolución 471 de 2020 del IGAC?" },
+  { icon: "layers", title: "Diagnóstico de usos del suelo para POT/PBOT", prompt: "¿Cómo estructurar un diagnóstico de usos del suelo y coberturas para un Plan de Ordenamiento Territorial (POT/PBOT), y qué análisis de superposición debo aplicar para detectar conflictos de uso?" },
+  { icon: "compass", title: "Accesibilidad y equipamientos urbanos", prompt: "¿Qué secuencia de geoprocesamiento (Buffer, Spatial Join, análisis de redes) uso para evaluar la accesibilidad y cobertura de equipamientos urbanos en un municipio?" },
+  { icon: "calculator", title: "Índice de Vegetación (NDVI) en Sentinel-2", prompt: "Explícame paso a paso cómo calcular el NDVI con imágenes Sentinel-2 en la Calculadora Ráster y cómo interpretar los valores en un estudio territorial y ambiental." },
+  { icon: "shield", title: "Amenazas y aptitud del suelo para proyectos", prompt: "¿Cómo integrar pendientes, geología y coberturas en un análisis de amenaza por movimientos en masa y aptitud del suelo para localizar un proyecto arquitectónico o urbanístico?" },
+  { icon: "sparkles", title: "Rondas hídricas y servicios públicos (EMPOPASTO)", prompt: "¿Cómo delimitar rondas hídricas y analizar la cobertura de redes de acueducto para identificar sectores urbanos con déficit de servicio, usando herramientas de geoprocesamiento?" },
 ];
 
 const FOLLOW_UP_SUGGESTIONS = [
@@ -473,6 +454,7 @@ Estoy aquí para orientarte paso a paso en **${config.programa}**, con **ArcGIS 
   };
 
   const isInitialState = messages.length === 1;
+  const starters = config.quickStarters.length > 0 ? config.quickStarters : DEFAULT_QUICK_STARTERS;
 
   return (
     <div
@@ -582,16 +564,18 @@ Estoy aquí para orientarte paso a paso en **${config.programa}**, con **ArcGIS 
               </a>
             ))}
 
-            <button
-              id="cronograma-btn"
-              onClick={() => setShowCronograma(true)}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-[#003057] hover:border-[#003057] transition font-semibold shadow-2xs hover:shadow-xs"
-              title="Ver el cronograma del diplomado"
-              aria-label="Ver el cronograma del diplomado"
-            >
-              <CalendarDays className="w-3.5 h-3.5 text-[#F3B229]" />
-              <span>Cronograma</span>
-            </button>
+            {config.cronograma && (
+              <button
+                id="cronograma-btn"
+                onClick={() => setShowCronograma(true)}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-[#003057] hover:border-[#003057] transition font-semibold shadow-2xs hover:shadow-xs"
+                title="Ver el cronograma del diplomado"
+                aria-label="Ver el cronograma del diplomado"
+              >
+                <CalendarDays className="w-3.5 h-3.5 text-[#F3B229]" />
+                <span>Cronograma</span>
+              </button>
+            )}
 
             <button
               id="export-chat-btn"
@@ -825,8 +809,8 @@ Estoy aquí para orientarte paso a paso en **${config.programa}**, con **ArcGIS 
               Consultas y Laboratorios Frecuentes:
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-              {QUICK_STARTERS.map((item, idx) => {
-                const Icon = item.icon;
+              {starters.map((item, idx) => {
+                const Icon = ICON_MAP[item.icon ?? ""] ?? ICON_MAP["mappin"];
                 return (
                   <button
                     key={idx}
@@ -851,14 +835,16 @@ Estoy aquí para orientarte paso a paso en **${config.programa}**, con **ArcGIS 
             </div>
 
             {/* Acceso directo al cronograma oficial del diplomado */}
-            <button
-              id="cronograma-starter-btn"
-              onClick={() => setShowCronograma(true)}
-              className="mt-3 w-full flex items-center justify-center gap-2 text-[11px] font-bold text-[#003057] bg-white border border-slate-200 hover:border-[#F3B229] hover:bg-amber-50/40 rounded-xl px-3 py-2 transition shadow-2xs"
-            >
-              <CalendarDays className="w-3.5 h-3.5 text-[#F3B229]" />
-              Ver cronograma del diplomado (ago – nov 2026)
-            </button>
+            {config.cronograma && (
+              <button
+                id="cronograma-starter-btn"
+                onClick={() => setShowCronograma(true)}
+                className="mt-3 w-full flex items-center justify-center gap-2 text-[11px] font-bold text-[#003057] bg-white border border-slate-200 hover:border-[#F3B229] hover:bg-amber-50/40 rounded-xl px-3 py-2 transition shadow-2xs"
+              >
+                <CalendarDays className="w-3.5 h-3.5 text-[#F3B229]" />
+                Ver cronograma del diplomado (ago – nov 2026)
+              </button>
+            )}
 
             {/* Descarga de los materiales de referencia del despliegue (pendientes si no hay) */}
             {config.materials.map((material) => (

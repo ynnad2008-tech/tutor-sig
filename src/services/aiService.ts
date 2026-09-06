@@ -69,6 +69,10 @@ export interface AppConfig {
   programa: string;
   /** Materiales de referencia del despliegue (vacío = pendientes por asignar). */
   materials: Array<{ title: string; url: string }>;
+  /** Tarjetas de consulta frecuente del despliegue. */
+  quickStarters: Array<{ title: string; prompt: string; icon?: string }>;
+  /** Mostrar el cronograma (false = pendiente/oculto en este despliegue). */
+  cronograma: boolean;
 }
 
 /** Petición genérica con manejo uniforme de errores del servidor. */

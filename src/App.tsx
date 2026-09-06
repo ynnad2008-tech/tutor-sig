@@ -23,6 +23,15 @@ const DEFAULT_CONFIG: AppConfig = {
       url: "/materials/Fase3_Analisis_Espacial.docx",
     },
   ],
+  quickStarters: [
+    { title: "MAGNA-SIRGAS Origen Nacional (9377)", icon: "mappin", prompt: "¿Cómo configuro y transformo mis capas al sistema oficial MAGNA-SIRGAS Origen Nacional (EPSG: 9377) según la Resolución 471 de 2020 del IGAC?" },
+    { title: "Diagnóstico de usos del suelo para POT/PBOT", icon: "layers", prompt: "¿Cómo estructurar un diagnóstico de usos del suelo y coberturas para un Plan de Ordenamiento Territorial (POT/PBOT), y qué análisis de superposición debo aplicar para detectar conflictos de uso?" },
+    { title: "Accesibilidad y equipamientos urbanos", icon: "compass", prompt: "¿Qué secuencia de geoprocesamiento (Buffer, Spatial Join, análisis de redes) uso para evaluar la accesibilidad y cobertura de equipamientos urbanos en un municipio?" },
+    { title: "Índice de Vegetación (NDVI) en Sentinel-2", icon: "calculator", prompt: "Explícame paso a paso cómo calcular el NDVI con imágenes Sentinel-2 en la Calculadora Ráster y cómo interpretar los valores en un estudio territorial y ambiental." },
+    { title: "Amenazas y aptitud del suelo para proyectos", icon: "shield", prompt: "¿Cómo integrar pendientes, geología y coberturas en un análisis de amenaza por movimientos en masa y aptitud del suelo para localizar un proyecto arquitectónico o urbanístico?" },
+    { title: "Rondas hídricas y servicios públicos (EMPOPASTO)", icon: "sparkles", prompt: "¿Cómo delimitar rondas hídricas y analizar la cobertura de redes de acueducto para identificar sectores urbanos con déficit de servicio, usando herramientas de geoprocesamiento?" },
+  ],
+  cronograma: true,
 };
 
 /** Nombre corto de la institución (última palabra) para logo y enlaces. */
