@@ -1,17 +1,25 @@
 import React from "react";
 import { ExternalLink, RotateCcw, Monitor } from "lucide-react";
 import { SoftwareTool } from "../types";
+import { AppConfig } from "../services/aiService";
 
 interface HeaderProps {
   selectedSoftware: SoftwareTool | "General";
   setSelectedSoftware: (software: any) => void;
   onResetChat: () => void;
+  /** Identidad institucional del despliegue (viene de /api/config). */
+  config: AppConfig;
+  logoLetra: string;
+  nombreCorto: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   selectedSoftware,
   setSelectedSoftware,
   onResetChat,
+  config,
+  logoLetra,
+  nombreCorto,
 }) => {
   return (
     <header className="bg-[#003057] text-white sticky top-0 z-40 border-b-4 border-[#C8102E] shadow-sm">
@@ -20,19 +28,19 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
           <div className="flex items-center gap-2.5 sm:gap-3">
             <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm border border-slate-100">
-              <span className="text-[#003057] font-extrabold text-lg sm:text-xl leading-none">C</span>
+              <span className="text-[#003057] font-extrabold text-lg sm:text-xl leading-none">{logoLetra}</span>
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-sm sm:text-base font-bold text-white tracking-tight flex items-center gap-1.5 sm:gap-2">
-                  Tutor-SIG
+                  {config.tutorName}
                   <span className="text-[9px] sm:text-[10px] bg-[#C8102E] text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
                     Copiloto IA
                   </span>
                 </h1>
               </div>
               <p className="text-[10px] sm:text-[11px] text-slate-300 font-medium">
-                Universidad CESMAG • <span className="text-slate-400">Autor: geógr. Dany Benavides Bolaños</span>
+                {config.institution} • <span className="text-slate-400">Autor: {config.author}</span>
               </p>
             </div>
           </div>
@@ -95,17 +103,17 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Nueva Consulta</span>
           </button>
 
-          {/* Link to CESMAG */}
+          {/* Link to institution portal */}
           <a
-            id="cesmag-portal-link"
-            href="https://www.unicesmag.edu.co/"
+            id="portal-institucional-link"
+            href={config.portalUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs inline-flex items-center gap-1 px-2.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-[#F3B229] font-bold transition border border-white/15"
-            title="Portal oficial de la Universidad CESMAG"
-            aria-label="Ir al portal oficial de la Universidad CESMAG"
+            title={`Portal oficial de la ${config.institution}`}
+            aria-label={`Ir al portal oficial de la ${config.institution}`}
           >
-            <span className="hidden md:inline">CESMAG</span>
+            <span className="hidden md:inline">{nombreCorto}</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>

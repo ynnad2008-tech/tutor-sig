@@ -57,7 +57,7 @@ Copia `.env.example` a `.env` (o `.env.local`, que tiene prioridad) y define:
 | `OLLAMA_BASE_URL` | URL de Ollama local (preparado) | `http://localhost:11434` |
 | `AI_REQUEST_TIMEOUT_MS` | Timeout por petición a un modelo | `120000` |
 | `AI_FALLBACK_CYCLES` | Ciclos completos sobre el pool | `2` |
-| `TUTOR_SIG_NAME` / `TUTOR_SIG_INSTITUTION` / `TUTOR_SIG_AUTHOR` | Identidad institucional (preparación multi-institución, p. ej. CESMAG) | Tutor-SIG / Universidad Mariana / Geógr. Dany Benavides Bolaños |
+| `TUTOR_SIG_NAME` / `TUTOR_SIG_INSTITUTION` / `TUTOR_SIG_AUTHOR` / `TUTOR_SIG_PORTAL_URL` | Identidad institucional del despliegue (interfaz + prompt, vía `/api/config`) | Tutor-SIG / Universidad CESMAG / geógr. Dany Benavides Bolaños / https://www.unicesmag.edu.co/ |
 
 **Orden de modelos por defecto** (OpenRouter):
 

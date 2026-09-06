@@ -14,6 +14,8 @@ export function readTutorIdentity(env: NodeJS.ProcessEnv): TutorIdentity {
       env.TUTOR_SIG_INSTITUTION?.trim() || "Universidad CESMAG",
     author:
       env.TUTOR_SIG_AUTHOR?.trim() || "geógr. Dany Benavides Bolaños",
+    portalUrl:
+      env.TUTOR_SIG_PORTAL_URL?.trim() || "https://www.unicesmag.edu.co/",
   };
 }
 

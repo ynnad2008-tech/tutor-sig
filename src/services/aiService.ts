@@ -59,6 +59,14 @@ export interface HealthInfo {
   author: string;
 }
 
+/** Identidad institucional del despliegue (proviene del servidor). */
+export interface AppConfig {
+  tutorName: string;
+  institution: string;
+  author: string;
+  portalUrl: string;
+}
+
 /** Petición genérica con manejo uniforme de errores del servidor. */
 async function apiRequest<T>(path: string, body?: unknown): Promise<T> {
   let response: Response;
@@ -127,4 +135,9 @@ export async function generateGeoprocessFlow(
 /** Estado del servidor. */
 export async function getHealth(): Promise<HealthInfo> {
   return apiRequest<HealthInfo>("/api/health");
+}
+
+/** Configuración pública del despliegue (marca institucional). */
+export async function getAppConfig(): Promise<AppConfig> {
+  return apiRequest<AppConfig>("/api/config");
 }

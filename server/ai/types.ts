@@ -46,4 +46,6 @@ export interface TutorIdentity {
   tutorName: string;
   institution: string;
   author: string;
+  /** Portal web institucional (enlace del encabezado y pie de página). */
+  portalUrl: string;
 }

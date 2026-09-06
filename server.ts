@@ -169,6 +169,19 @@ app.post("/api/geoprocess-flow", async (req, res) => {
   }
 });
 
+// API route: Public app configuration (identidad institucional del despliegue).
+// Permite que un mismo código muestre la marca de cada institución según las
+// variables de entorno del servidor (p. ej. Universidad Mariana en AI Studio,
+// Universidad CESMAG en Render).
+app.get("/api/config", (_req, res) => {
+  res.json({
+    tutorName: identity.tutorName,
+    institution: identity.institution,
+    author: identity.author,
+    portalUrl: identity.portalUrl,
+  });
+});
+
 // Health check endpoint
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", tutor: "Tutor-SIG", author: "geógr. Dany Benavides Bolaños" });
