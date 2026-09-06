@@ -47,6 +47,9 @@ function logoLetra(institution: string): string {
 export default function App() {
   const [selectedSoftware, setSelectedSoftware] = useState<SoftwareTool | "General">("General");
   const [config, setConfig] = useState<AppConfig>(DEFAULT_CONFIG);
+  // Espera a /api/config antes de pintar la interfaz: evita que la bienvenida
+  // y los textos se congelen con la identidad por defecto.
+  const [configLoaded, setConfigLoaded] = useState(false);
   const resetChatRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -59,6 +62,9 @@ export default function App() {
       })
       .catch(() => {
         // Sin conexión con /api/config se mantiene la identidad por defecto.
+      })
+      .finally(() => {
+        if (activo) setConfigLoaded(true);
       });
     return () => {
       activo = false;
@@ -75,6 +81,23 @@ export default function App() {
     .replace(/^https?:\/\//, "")
     .replace(/^www\./, "")
     .replace(/\/$/, "");
+
+  if (!configLoaded) {
+    // Pantalla de carga mínima mientras llega la identidad del despliegue.
+    return (
+      <div className="min-h-screen bg-[#003057] flex flex-col items-center justify-center text-white gap-3">
+        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+          <span className="text-[#003057] font-extrabold text-xl leading-none">T</span>
+        </div>
+        <span className="text-sm font-semibold">Tutor-SIG</span>
+        <div className="flex space-x-1.5 mt-1">
+          <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+          <div className="w-2 h-2 bg-[#C8102E] rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+          <div className="w-2 h-2 bg-[#F3B229] rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans antialiased selection:bg-[#C8102E] selection:text-white">
