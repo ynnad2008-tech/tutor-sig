@@ -66,6 +66,10 @@ Copia `.env.example` a `.env` (o `.env.local`, que tiene prioridad) y define:
 
 ## Ejecución local
 
+**Con lanzador (Windows)**: doble clic en `Iniciar-Tutor-SIG.bat` (invoca `Tutor-SIG.ps1`): verifica Node, crea `.env` la primera vez, instala dependencias si faltan, abre el navegador y arranca el servidor en http://localhost:3000.
+
+**Manual**:
+
 ```bash
 npm install        # o bun install
 # 1. Configura OPENROUTER_API_KEY en .env
