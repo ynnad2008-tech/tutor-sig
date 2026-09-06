@@ -12,6 +12,7 @@ dotenv.config({ path: [".env.local", ".env"] });
 import { createProviderFromEnv } from "./server/ai/providers";
 import { createFallbackGenerator } from "./server/ai/generator";
 import {
+  buildCronogramaSection,
   buildEvaluatePrompt,
   buildGeoprocessFlowPrompt,
   buildSystemInstruction,
@@ -33,7 +34,8 @@ app.use(express.json({ limit: "50mb" }));
 const provider = createProviderFromEnv(process.env);
 const fallback = createFallbackGenerator(provider, process.env);
 const identity = readTutorIdentity(process.env);
-const systemInstruction = buildSystemInstruction(identity);
+const systemInstruction =
+  buildSystemInstruction(identity) + buildCronogramaSection(process.env);
 
 console.log(
   `[Tutor-SIG] Proveedor IA: ${provider.name} | Modelo principal: ${fallback.pool.primary} | ` +
