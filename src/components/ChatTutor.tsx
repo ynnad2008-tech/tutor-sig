@@ -25,6 +25,7 @@ import {
   Code,
   Terminal,
   CalendarDays,
+  FileText,
 } from "lucide-react";
 import { ChatMessage, SoftwareTool } from "../types";
 import { chatWithTutor } from "../services/aiService";
@@ -562,6 +563,19 @@ Estoy aquí para orientarte paso a paso en **SIG aplicado a la Arquitectura, el 
           </div>
 
           <div className="flex items-center gap-2">
+            <a
+              id="material-fase3-link"
+              href="/materials/Fase3_Analisis_Espacial.docx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-[#003057] hover:border-[#003057] transition font-semibold shadow-2xs hover:shadow-xs"
+              title="Descargar el material de estudio de la Fase 3: Análisis Espacial"
+              aria-label="Descargar el material de estudio de la Fase 3"
+            >
+              <FileText className="w-3.5 h-3.5 text-[#C8102E]" />
+              <span>Material Fase 3</span>
+            </a>
+
             <button
               id="cronograma-btn"
               onClick={() => setShowCronograma(true)}
@@ -839,6 +853,18 @@ Estoy aquí para orientarte paso a paso en **SIG aplicado a la Arquitectura, el 
               <CalendarDays className="w-3.5 h-3.5 text-[#F3B229]" />
               Ver cronograma del diplomado (ago – nov 2026)
             </button>
+
+            {/* Descarga del material de estudio de la Fase 3 */}
+            <a
+              id="material-fase3-starter-link"
+              href="/materials/Fase3_Analisis_Espacial.docx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 w-full flex items-center justify-center gap-2 text-[11px] font-bold text-[#003057] bg-white border border-slate-200 hover:border-[#C8102E] hover:bg-rose-50/40 rounded-xl px-3 py-2 transition shadow-2xs"
+            >
+              <FileText className="w-3.5 h-3.5 text-[#C8102E]" />
+              Descargar material de estudio — Fase 3: Análisis Espacial
+            </a>
           </div>
         )}
 

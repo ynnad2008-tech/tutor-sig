@@ -114,6 +114,14 @@ El repo incluye un blueprint (`render.yaml`) listo para desplegar:
 
 La API key nunca se sube al repositorio: solo vive en el panel de secretos de la plataforma.
 
+## Materiales publicados
+
+| Material | Enlace |
+|---|---|
+| Material de estudio — Fase 3: Análisis Espacial (.docx) | `/materials/Fase3_Analisis_Espacial.docx` |
+
+El archivo vive en `public/materials/` y se sirve en la raíz del sitio (también accesible desde los botones del chat).
+
 ## API
 
 | Endpoint | Entrada | Salida |
