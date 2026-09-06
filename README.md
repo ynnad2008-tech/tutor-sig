@@ -2,6 +2,10 @@
 
 Asistente pedagógico especializado en **Sistemas de Información Geográfica, Teledetección, Cartografía e IA Geoespacial** para la **Universidad Mariana** (Pasto, Colombia). Autor intelectual: **Geógr. Dany Benavides Bolaños**.
 
+https://tutor-sig.onrender.com
+
+
+
 La aplicación es **independiente del proveedor de IA**: funciona con OpenRouter, DeepSeek, Gemini, Claude o Ollama, seleccionables mediante variables de entorno sin modificar ningún componente de la interfaz.
 
 > Proyecto generado en AI Studio: https://ai.studio/apps/26aa80cb-0475-4a5c-ac8b-969250ceec31
