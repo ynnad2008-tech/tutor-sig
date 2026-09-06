@@ -65,6 +65,10 @@ export interface AppConfig {
   institution: string;
   author: string;
   portalUrl: string;
+  /** Programa académico que acompaña el tutor (bienvenida y prompt). */
+  programa: string;
+  /** Materiales de referencia del despliegue (vacío = pendientes por asignar). */
+  materials: Array<{ title: string; url: string }>;
 }
 
 /** Petición genérica con manejo uniforme de errores del servidor. */

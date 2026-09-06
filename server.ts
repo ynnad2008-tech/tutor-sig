@@ -40,6 +40,35 @@ console.log(
     `Fallback: ${fallback.pool.fallbacks.join(", ") || "ninguno"}`
 );
 
+// Materiales de referencia del despliegue (pendientes por institución).
+// MATERIALES_JSON es un arreglo JSON de { title, url }. Si la variable no
+// está definida se usa el material por defecto de CESMAG; si es "[]" no se
+// publica ningún material (quedan pendientes para asignar).
+function readMaterials(env: NodeJS.ProcessEnv): Array<{ title: string; url: string }> {
+  const raw = env.MATERIALES_JSON?.trim();
+  if (raw === undefined || raw === "") {
+    return [
+      {
+        title: "Material Fase 3 — Análisis Espacial",
+        url: "/materials/Fase3_Analisis_Espacial.docx",
+      },
+    ];
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      return parsed.filter(
+        (m: any) => m && typeof m.title === "string" && typeof m.url === "string"
+      );
+    }
+  } catch (error) {
+    console.warn("[Tutor-SIG] MATERIALES_JSON inválido; se omiten los materiales.");
+  }
+  return [];
+}
+
+const materials = readMaterials(process.env);
+
 // Normaliza los mensajes del cliente (base64 con prefijo data:) al formato
 // interno independiente del proveedor.
 function toAINormalizedMessages(messages: any[]): AINormalizedMessage[] {
@@ -179,6 +208,8 @@ app.get("/api/config", (_req, res) => {
     institution: identity.institution,
     author: identity.author,
     portalUrl: identity.portalUrl,
+    programa: identity.programa,
+    materials,
   });
 });
 

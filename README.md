@@ -58,6 +58,9 @@ Copia `.env.example` a `.env` (o `.env.local`, que tiene prioridad) y define:
 | `AI_REQUEST_TIMEOUT_MS` | Timeout por petición a un modelo | `120000` |
 | `AI_FALLBACK_CYCLES` | Ciclos completos sobre el pool | `2` |
 | `TUTOR_SIG_NAME` / `TUTOR_SIG_INSTITUTION` / `TUTOR_SIG_AUTHOR` / `TUTOR_SIG_PORTAL_URL` | Identidad institucional del despliegue (interfaz + prompt, vía `/api/config`) | Tutor-SIG / Universidad CESMAG / geógr. Dany Benavides Bolaños / https://www.unicesmag.edu.co/ |
+| `TUTOR_SIG_PROGRAMA` | Programa académico de la bienvenida y del prompt | Diplomado en SIG + IA — Facultad de Arquitectura |
+| `TUTOR_SIG_ENFOQUE` | Frase de enfoque disciplinar del prompt | Arquitectura y Ordenamiento Territorial (ambiental complementario) |
+| `MATERIALES_JSON` | Materiales de referencia del despliegue: arreglo JSON de `{title, url}`; `[]` = pendientes | Material Fase 3 de CESMAG |
 
 **Orden de modelos por defecto** (OpenRouter):
 

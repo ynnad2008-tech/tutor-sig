@@ -48,4 +48,8 @@ export interface TutorIdentity {
   author: string;
   /** Portal web institucional (enlace del encabezado y pie de página). */
   portalUrl: string;
+  /** Programa académico que acompaña el tutor (bienvenida y prompt). */
+  programa: string;
+  /** Frase de enfoque disciplinar del prompt (una línea). */
+  enfoque: string;
 }

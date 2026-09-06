@@ -15,6 +15,14 @@ const DEFAULT_CONFIG: AppConfig = {
   institution: "Universidad CESMAG",
   author: "geógr. Dany Benavides Bolaños",
   portalUrl: "https://www.unicesmag.edu.co/",
+  programa:
+    "el Diplomado en Sistemas de Información Geográfica (SIG) + IA — Facultad de Arquitectura",
+  materials: [
+    {
+      title: "Material Fase 3 — Análisis Espacial",
+      url: "/materials/Fase3_Analisis_Espacial.docx",
+    },
+  ],
 };
 
 /** Nombre corto de la institución (última palabra) para logo y enlaces. */
