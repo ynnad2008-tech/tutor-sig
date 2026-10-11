@@ -87,6 +87,10 @@ export function isOverloadOrTimeout(message: string): boolean {
  */
 export function modelSupportsVision(model: string): boolean {
   if (model.startsWith("deepseek")) return false; // deepseek-chat / deepseek-reasoner son solo texto
+  // Nemotron de texto plano (Ultra, Super, Lightning, Content Safety y Nano 30B).
+  // El único Nemotron multimodal gratuito es nano-omni (nvidia/nemotron-3-nano-omni-*):
+  // recibe las consultas con imágenes/mapas de la cadena gratuita del lanzamiento.
+  if (/^nvidia\/nemotron-(3-(ultra|super|nano-30b)|3\.5-(lightning|content-safety))/.test(model)) return false;
   return true;
 }
 

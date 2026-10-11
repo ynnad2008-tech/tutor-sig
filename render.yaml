@@ -15,8 +15,8 @@ services:
       - key: MODEL_PROVIDER
         value: openrouter
       - key: DEFAULT_MODEL
-        value: deepseek/deepseek-v4-flash
+        value: nvidia/nemotron-3-ultra-550b-a55b:free
       - key: FALLBACK_MODELS
-        value: qwen/qwen3.6-flash,anthropic/claude-sonnet-4.6,minimax/minimax-m3:free
+        value: nvidia/nemotron-3-super-120b-a12b:free,nvidia/nemotron-3.5-lightning:free,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
       - key: OPENROUTER_API_KEY
         sync: false # SECRETO: configúralo en el dashboard de Render
